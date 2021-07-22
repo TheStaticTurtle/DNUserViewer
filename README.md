@@ -1,7 +1,7 @@
 # DNUserViewer
 
 DNUserViewer is a simple query tool to see information about a user on an Active Directory server
-<img src="https://i.ibb.co/HT79gnn/DNUser-Viewer-8-Jmh9o-Ysob.png" alt="DNUser-Viewer-8-Jmh9o-Ysob" border="0">
+![DNUserViewer_8Jmh9oYsob](https://user-images.githubusercontent.com/17061996/126651574-040beb3a-4d84-4410-94d4-65a39a576f84.png)
 
 It also allow to export the data as a json file.
 

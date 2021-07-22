@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DNUserViewer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("DNUserViewer is a simple query tool to see information about a user on an Active Directory server")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyCompany("TheStaticTurtle")]
 [assembly: AssemblyProduct("DNUserViewer")]
-[assembly: AssemblyCopyright("Copyright © HP Inc. 2021")]
+[assembly: AssemblyCopyright("Copyright © TheStaticTurtle. 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

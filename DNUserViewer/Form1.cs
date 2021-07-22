@@ -63,6 +63,9 @@ namespace DNUserViewer {
                 } else if (password == "") {
                     MessageBox.Show("Missing password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
+                    exportDict = new Dictionary<string, string>();
+                    buttonExport.Enabled = false;
+
                     LdapConnection connection = new LdapConnection(domain);
                     NetworkCredential credential = new NetworkCredential(username, password);
                     connection.Credential = credential;
@@ -71,12 +74,14 @@ namespace DNUserViewer {
                     // after authenticate Loading user details to data table
                     PrincipalContext ctx = new PrincipalContext(ContextType.Domain);
                     UserPrincipal ld_user = UserPrincipal.FindByIdentity(ctx, query);
+                    if(ld_user == null) {
+                        MessageBox.Show("Invalid query username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     DirectoryEntry up_User = (DirectoryEntry)ld_user.GetUnderlyingObject();
                     DirectorySearcher deSearch = new DirectorySearcher(up_User);
                     SearchResultCollection results = deSearch.FindAll();
 
-                    exportDict = new Dictionary<string, string>();
-                    buttonExport.Enabled = false;
 
                     //int i = 0;
                     if (results != null && results.Count > 0) {
@@ -146,9 +151,9 @@ namespace DNUserViewer {
 
             } catch (LdapException lexc) {
                 ShowLDAPError(lexc);
-            }/* catch (Exception) {
-                MessageBox.Show("Invalid Username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            } catch (NullReferenceException) {
+                MessageBox.Show("Invalid query username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonQueryUsername_Click(object sender, EventArgs e) {
